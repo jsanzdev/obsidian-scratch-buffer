@@ -37,13 +37,13 @@ body{--font-monospace-theme:"JetBrains Mono","SF Mono",ui-monospace,Menlo,Consol
 .markdown-rendered h5::before{content:"##### "}
 .markdown-rendered h6::before{content:"###### "}
 .markdown-source-view.mod-cm6 .cm-formatting-header{color:var(--sb-kw);font-weight:400}
-.markdown-source-view.is-live-preview .HyperMD-header:not(:has(.cm-formatting-header))::before{color:var(--sb-kw);font-weight:400}
-.markdown-source-view.is-live-preview .HyperMD-header-1:not(:has(.cm-formatting-header))::before{content:"# "}
-.markdown-source-view.is-live-preview .HyperMD-header-2:not(:has(.cm-formatting-header))::before{content:"## "}
-.markdown-source-view.is-live-preview .HyperMD-header-3:not(:has(.cm-formatting-header))::before{content:"### "}
-.markdown-source-view.is-live-preview .HyperMD-header-4:not(:has(.cm-formatting-header))::before{content:"#### "}
-.markdown-source-view.is-live-preview .HyperMD-header-5:not(:has(.cm-formatting-header))::before{content:"##### "}
-.markdown-source-view.is-live-preview .HyperMD-header-6:not(:has(.cm-formatting-header))::before{content:"###### "}
+.markdown-source-view.is-live-preview .HyperMD-header:not(.cm-active)::before{color:var(--sb-kw);font-weight:400}
+.markdown-source-view.is-live-preview .HyperMD-header-1:not(.cm-active)::before{content:"# "}
+.markdown-source-view.is-live-preview .HyperMD-header-2:not(.cm-active)::before{content:"## "}
+.markdown-source-view.is-live-preview .HyperMD-header-3:not(.cm-active)::before{content:"### "}
+.markdown-source-view.is-live-preview .HyperMD-header-4:not(.cm-active)::before{content:"#### "}
+.markdown-source-view.is-live-preview .HyperMD-header-5:not(.cm-active)::before{content:"##### "}
+.markdown-source-view.is-live-preview .HyperMD-header-6:not(.cm-active)::before{content:"###### "}
 
 /* Inline code reads as a string */
 .markdown-rendered :not(pre)>code,.markdown-source-view.mod-cm6 .cm-inline-code:not(.cm-formatting){color:var(--sb-str)}
@@ -52,11 +52,12 @@ body{--font-monospace-theme:"JetBrains Mono","SF Mono",ui-monospace,Menlo,Consol
 .markdown-rendered blockquote{padding-inline-start:26px;background:var(--sb-slash) 0 0/22px 1lh no-repeat;background-repeat:no-repeat round}
 .markdown-source-view.mod-cm6 .HyperMD-quote::before{display:none}
 .markdown-source-view.mod-cm6 .HyperMD-quote{color:var(--blockquote-color);font-style:italic}
-.markdown-source-view.mod-cm6 .cm-formatting-quote .cm-transparent{display:none}
-.markdown-source-view.mod-cm6 .cm-formatting-quote:has(.cm-transparent)::before{content:"//";color:var(--sb-cm);font-family:var(--sb-mono);font-style:normal}
+.markdown-source-view.mod-cm6 .cm-formatting-quote .cm-transparent{font-size:0}
+.markdown-source-view.mod-cm6 .cm-formatting-quote .cm-transparent::before{content:"//";font-size:var(--font-text-size);color:var(--sb-cm);font-family:var(--sb-mono);font-style:normal}
 
 /* Links underline with dots, like a go-to-definition hint */
-.markdown-rendered a,.markdown-source-view.mod-cm6 .cm-underline{text-decoration-style:dotted;text-underline-offset:3px}
+body{--link-decoration:none;--link-decoration-hover:none;--link-external-decoration:none;--link-external-decoration-hover:none}
+.markdown-rendered a,.markdown-source-view.mod-cm6 .cm-underline{background-image:linear-gradient(to right,currentColor 1px,transparent 1px);background-size:3px 1px;background-repeat:repeat-x;background-position:0 100%}
 .markdown-rendered hr,.markdown-source-view.mod-cm6 hr{border-top-style:dashed}
 
 /* Editor gutter and cursor */
@@ -64,8 +65,12 @@ body{--font-monospace-theme:"JetBrains Mono","SF Mono",ui-monospace,Menlo,Consol
 .markdown-source-view.mod-cm6 .cm-activeLineGutter{color:var(--text-accent)}
 .markdown-source-view.mod-cm6 .cm-content{caret-color:var(--interactive-accent)}
 
-/* Vim mode chip in the status bar: real Vim modes when Vim key bindings are on */
-body:has(.workspace-leaf.mod-active .cm-editor.cm-focused){--sb-mode:var(--sb-insert)}
-body:has(.workspace-leaf.mod-active .cm-editor.cm-focused .cm-fat-cursor){--sb-mode:var(--sb-normal)}
-body:has(.workspace-leaf.mod-active .cm-editor.cm-focused .cm-fat-cursor):has(.workspace-leaf.mod-active .cm-editor.cm-focused .cm-layer.cm-cursorLayer .cm-cursor-primary){--sb-mode:var(--sb-visual)}
-.status-bar::before{content:"";flex:0 0 auto;width:var(--sb-mode-w);height:18px;margin-inline-end:6px;background:var(--sb-mode) 0 0/auto 18px no-repeat}
+/* Vim mode chip in the corner of the focused note, like a Vim mode line.
+   Obsidian adds .cm-vimMode in Normal and Visual and drops it in Insert. */
+.markdown-source-view.mod-cm6 .cm-editor.cm-focused .cm-scroller::after,.markdown-source-view.mod-cm6 .cm-editor.cm-focused .cm-vimMode>.cm-layer.cm-cursorLayer:not(:empty)::after{content:"";position:fixed;left:12px;bottom:12px;width:59px;height:18px;pointer-events:none;background:var(--sb-insert) 0 0/auto 18px no-repeat}
+.markdown-source-view.mod-cm6 .cm-editor.cm-focused .cm-scroller.cm-vimMode::after{background-image:var(--sb-normal)}
+/* Visual: this layer holds a cursor only in Visual mode. Obsidian hides it under Vim;
+   show the layer (not its cursor) and hang a steady VISUAL chip on it. */
+.markdown-source-view.mod-cm6 .cm-editor.cm-focused .cm-vimMode>.cm-layer.cm-cursorLayer:not(:empty){display:block !important;animation:none !important}
+.markdown-source-view.mod-cm6 .cm-editor.cm-focused .cm-vimMode>.cm-layer.cm-cursorLayer:not(:empty)>*{visibility:hidden}
+.markdown-source-view.mod-cm6 .cm-editor.cm-focused .cm-vimMode>.cm-layer.cm-cursorLayer:not(:empty)::after{background-image:var(--sb-visual)}
