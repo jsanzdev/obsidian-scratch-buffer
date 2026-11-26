@@ -1,0 +1,71 @@
+/*
+ * Scratch Buffer for Obsidian, by jsanzdev
+ * Your vault as an open editor buffer: syntax-coloured markdown,
+ * a git graph in the margin and a Vim mode chip in the status bar.
+ * Ported from the Scratch Buffer theme for T3 Code.
+ */
+body{--font-monospace-theme:"JetBrains Mono","SF Mono",ui-monospace,Menlo,Consolas,monospace;--sb-mono:var(--font-monospace);
+--h1-font:var(--sb-mono);--h2-font:var(--sb-mono);--h3-font:var(--sb-mono);--h4-font:var(--sb-mono);--h5-font:var(--sb-mono);--h6-font:var(--sb-mono);--inline-title-font:var(--sb-mono);
+--blockquote-border-thickness:0px;--blockquote-font-style:italic;--hr-thickness:1px;--radius-s:3px;--radius-m:5px;--radius-l:7px;--code-radius:4px;
+--sb-graph-w:70px;--sb-graph:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='70' height='968' fill='none' stroke-width='2' opacity='0.5'%3E%3Cpath stroke='%232BA898' d='M52 0V968'/%3E%3Cpath stroke='%234F8FE0' d='M52 913C52 889 37 893 37 869V539C37 515 52 519 52 495'/%3E%3Cpath stroke='%23C765B4' d='M37 825C37 801 22 805 22 781V671C22 647 37 651 37 627'/%3E%3Cpath stroke='%23C98A3A' d='M22 781C22 757 7 761 7 737V737C7 713 22 717 22 693'/%3E%3Cpath stroke='%233FA365' d='M52 429C52 405 37 409 37 385V253C37 229 52 233 52 209'/%3E%3Cpath stroke='%23C98A3A' d='M37 363C37 339 22 343 22 319V319C22 295 37 299 37 275'/%3E%3Cpath stroke='%23C765B4' d='M52 165C52 141 37 145 37 121V55'/%3E%3Ccircle cx='37' cy='49' r='5.5' stroke='%23C765B4'/%3E%3Ccircle cx='52' cy='957' r='4.5' fill='%232BA898'/%3E%3Ccircle cx='52' cy='913' r='4.5' fill='%232BA898'/%3E%3Ccircle cx='52' cy='869' r='4.5' fill='%232BA898'/%3E%3Ccircle cx='52' cy='759' r='4.5' fill='%232BA898'/%3E%3Ccircle cx='52' cy='671' r='4.5' fill='%232BA898'/%3E%3Ccircle cx='52' cy='561' r='4.5' fill='%232BA898'/%3E%3Ccircle cx='52' cy='495' r='4.5' fill='%232BA898'/%3E%3Ccircle cx='52' cy='451' r='4.5' fill='%232BA898'/%3E%3Ccircle cx='52' cy='429' r='4.5' fill='%232BA898'/%3E%3Ccircle cx='52' cy='319' r='4.5' fill='%232BA898'/%3E%3Ccircle cx='52' cy='209' r='4.5' fill='%232BA898'/%3E%3Ccircle cx='52' cy='165' r='4.5' fill='%232BA898'/%3E%3Ccircle cx='52' cy='99' r='4.5' fill='%232BA898'/%3E%3Ccircle cx='52' cy='33' r='4.5' fill='%232BA898'/%3E%3Ccircle cx='37' cy='825' r='4.5' fill='%234F8FE0'/%3E%3Ccircle cx='37' cy='737' r='4.5' fill='%234F8FE0'/%3E%3Ccircle cx='37' cy='627' r='4.5' fill='%234F8FE0'/%3E%3Ccircle cx='37' cy='539' r='4.5' fill='%234F8FE0'/%3E%3Ccircle cx='22' cy='781' r='4.5' fill='%23C765B4'/%3E%3Ccircle cx='22' cy='693' r='4.5' fill='%23C765B4'/%3E%3Ccircle cx='22' cy='671' r='4.5' fill='%23C765B4'/%3E%3Ccircle cx='7' cy='737' r='4.5' fill='%23C98A3A'/%3E%3Ccircle cx='37' cy='363' r='4.5' fill='%233FA365'/%3E%3Ccircle cx='37' cy='275' r='4.5' fill='%233FA365'/%3E%3Ccircle cx='37' cy='253' r='4.5' fill='%233FA365'/%3E%3Ccircle cx='22' cy='319' r='4.5' fill='%23C98A3A'/%3E%3Ccircle cx='37' cy='99' r='4.5' fill='%23C765B4'/%3E%3C/svg%3E")}
+.theme-dark{--color-base-00:#16181D;--color-base-05:#1A1D23;--color-base-10:#1C1F26;--color-base-20:#121418;--color-base-25:#1F232B;--color-base-30:#2D323C;--color-base-35:#3A404C;--color-base-40:#4A5362;--color-base-50:#7F8A9C;--color-base-60:#8792A4;--color-base-70:#9AA5B6;--color-base-100:#D9DEE7;--color-red:#FF7B85;--color-orange:#E8B04B;--color-yellow:#E8B97C;--color-green:#6FCF8E;--color-cyan:#4FD1BD;--color-blue:#82B7FF;--color-purple:#B9A0FF;--color-pink:#E59BD8;--accent-h:171;--accent-s:59%;--accent-l:56%;--text-on-accent:#06231F;--text-selection:#2C4A6B;--text-highlight-bg:#E8B04B40;
+--code-background:#0F1115;--code-comment:#8D99AB;--code-keyword:#E59BD8;--code-function:#82B7FF;--code-string:#E8B97C;--code-value:#E8B04B;--code-property:#4FD1BD;--code-operator:#E59BD8;--code-tag:#E59BD8;--code-important:#E8B04B;
+--h1-color:#82B7FF;--h2-color:#82B7FF;--h3-color:#82B7FF;--h4-color:#82B7FF;--h5-color:#82B7FF;--h6-color:#82B7FF;--sb-kw:#E59BD8;--sb-str:#E8B97C;--sb-cm:#8D99AB;--sb-dot:#FFFFFF12;
+--blockquote-color:#8D99AB;--list-marker-color:#E59BD8;--sb-slash:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22' fill='none' stroke='%238D99AB' stroke-width='1.4'%3E%3Cpath d='M3 17L8 5M9 17L14 5'/%3E%3C/svg%3E");
+--sb-normal:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='59' height='18'%3E%3Crect width='59' height='18' rx='3' fill='%232F3541'/%3E%3Ctext x='8' y='13' fill='%23D9DEE7' font-family='JetBrains Mono,ui-monospace,Menlo,monospace' font-size='11' font-weight='700' textLength='43'%3ENORMAL%3C/text%3E%3C/svg%3E");--sb-insert:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='59' height='18'%3E%3Crect width='59' height='18' rx='3' fill='%234FD1BD'/%3E%3Ctext x='8' y='13' fill='%2306231F' font-family='JetBrains Mono,ui-monospace,Menlo,monospace' font-size='11' font-weight='700' textLength='43'%3EINSERT%3C/text%3E%3C/svg%3E");--sb-visual:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='59' height='18'%3E%3Crect width='59' height='18' rx='3' fill='%23E59BD8'/%3E%3Ctext x='8' y='13' fill='%232A0A25' font-family='JetBrains Mono,ui-monospace,Menlo,monospace' font-size='11' font-weight='700' textLength='43'%3EVISUAL%3C/text%3E%3C/svg%3E");--sb-mode:var(--sb-normal);--sb-mode-w:59px;}
+.theme-light{--color-base-00:#F8F9FA;--color-base-05:#F4F6F8;--color-base-10:#F0F2F5;--color-base-20:#EDEFF2;--color-base-25:#E9ECF0;--color-base-30:#D3D8DF;--color-base-35:#C4CAD3;--color-base-40:#A5AEBB;--color-base-50:#6B7687;--color-base-60:#647083;--color-base-70:#566173;--color-base-100:#1E2430;--color-red:#C2233A;--color-orange:#8A5A00;--color-yellow:#8F4A00;--color-green:#187237;--color-cyan:#00756A;--color-blue:#1F5FBF;--color-purple:#6A3FC2;--color-pink:#A1278F;--accent-h:174;--accent-s:100%;--accent-l:23%;--text-on-accent:#FFFFFF;--text-selection:#BFDDFB;--text-highlight-bg:#FBE7A8;
+--code-background:#F0F2F5;--code-comment:#5A6675;--code-keyword:#A1278F;--code-function:#1F5FBF;--code-string:#8F4A00;--code-value:#8A5A00;--code-property:#00756A;--code-operator:#A1278F;--code-tag:#A1278F;--code-important:#8A5A00;
+--h1-color:#1F5FBF;--h2-color:#1F5FBF;--h3-color:#1F5FBF;--h4-color:#1F5FBF;--h5-color:#1F5FBF;--h6-color:#1F5FBF;--sb-kw:#A1278F;--sb-str:#8F4A00;--sb-cm:#5A6675;--sb-dot:#1E243018;
+--blockquote-color:#5A6675;--list-marker-color:#A1278F;--sb-slash:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22' fill='none' stroke='%235A6675' stroke-width='1.4'%3E%3Cpath d='M3 17L8 5M9 17L14 5'/%3E%3C/svg%3E");
+--sb-normal:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='59' height='18'%3E%3Crect width='59' height='18' rx='3' fill='%23DDE2E8'/%3E%3Ctext x='8' y='13' fill='%231E2430' font-family='JetBrains Mono,ui-monospace,Menlo,monospace' font-size='11' font-weight='700' textLength='43'%3ENORMAL%3C/text%3E%3C/svg%3E");--sb-insert:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='59' height='18'%3E%3Crect width='59' height='18' rx='3' fill='%2300756A'/%3E%3Ctext x='8' y='13' fill='%23FFFFFF' font-family='JetBrains Mono,ui-monospace,Menlo,monospace' font-size='11' font-weight='700' textLength='43'%3EINSERT%3C/text%3E%3C/svg%3E");--sb-visual:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='59' height='18'%3E%3Crect width='59' height='18' rx='3' fill='%23A1278F'/%3E%3Ctext x='8' y='13' fill='%23FFFFFF' font-family='JetBrains Mono,ui-monospace,Menlo,monospace' font-size='11' font-weight='700' textLength='43'%3EVISUAL%3C/text%3E%3C/svg%3E");--sb-mode:var(--sb-normal);--sb-mode-w:59px;}
+@media (min-width:1400px){body{--sb-graph-w:162px;--sb-graph:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='162' height='968' fill='none' stroke-width='2' opacity='0.6'%3E%3Cpath stroke='%232BA898' d='M144 0V968'/%3E%3Cpath stroke='%234F8FE0' d='M144 913C144 889 106 893 106 869V539C106 515 144 519 144 495'/%3E%3Cpath stroke='%23C765B4' d='M106 825C106 801 68 805 68 781V671C68 647 106 651 106 627'/%3E%3Cpath stroke='%23C98A3A' d='M68 781C68 757 30 761 30 737V737C30 713 68 717 68 693'/%3E%3Cpath stroke='%233FA365' d='M144 429C144 405 106 409 106 385V253C106 229 144 233 144 209'/%3E%3Cpath stroke='%23C98A3A' d='M106 363C106 339 68 343 68 319V319C68 295 106 299 106 275'/%3E%3Cpath stroke='%23C765B4' d='M144 165C144 141 106 145 106 121V55'/%3E%3Ccircle cx='106' cy='49' r='5.5' stroke='%23C765B4'/%3E%3Ccircle cx='144' cy='957' r='4.5' fill='%232BA898'/%3E%3Ccircle cx='144' cy='913' r='4.5' fill='%232BA898'/%3E%3Ccircle cx='144' cy='869' r='4.5' fill='%232BA898'/%3E%3Ccircle cx='144' cy='759' r='4.5' fill='%232BA898'/%3E%3Ccircle cx='144' cy='671' r='4.5' fill='%232BA898'/%3E%3Ccircle cx='144' cy='561' r='4.5' fill='%232BA898'/%3E%3Ccircle cx='144' cy='495' r='4.5' fill='%232BA898'/%3E%3Ccircle cx='144' cy='451' r='4.5' fill='%232BA898'/%3E%3Ccircle cx='144' cy='429' r='4.5' fill='%232BA898'/%3E%3Ccircle cx='144' cy='319' r='4.5' fill='%232BA898'/%3E%3Ccircle cx='144' cy='209' r='4.5' fill='%232BA898'/%3E%3Ccircle cx='144' cy='165' r='4.5' fill='%232BA898'/%3E%3Ccircle cx='144' cy='99' r='4.5' fill='%232BA898'/%3E%3Ccircle cx='144' cy='33' r='4.5' fill='%232BA898'/%3E%3Ccircle cx='106' cy='825' r='4.5' fill='%234F8FE0'/%3E%3Ccircle cx='106' cy='737' r='4.5' fill='%234F8FE0'/%3E%3Ccircle cx='106' cy='627' r='4.5' fill='%234F8FE0'/%3E%3Ccircle cx='106' cy='539' r='4.5' fill='%234F8FE0'/%3E%3Ccircle cx='68' cy='781' r='4.5' fill='%23C765B4'/%3E%3Ccircle cx='68' cy='693' r='4.5' fill='%23C765B4'/%3E%3Ccircle cx='68' cy='671' r='4.5' fill='%23C765B4'/%3E%3Ccircle cx='30' cy='737' r='4.5' fill='%23C98A3A'/%3E%3Ccircle cx='106' cy='363' r='4.5' fill='%233FA365'/%3E%3Ccircle cx='106' cy='275' r='4.5' fill='%233FA365'/%3E%3Ccircle cx='106' cy='253' r='4.5' fill='%233FA365'/%3E%3Ccircle cx='68' cy='319' r='4.5' fill='%23C98A3A'/%3E%3Ccircle cx='106' cy='99' r='4.5' fill='%23C765B4'/%3E%3C/svg%3E")}}
+
+/* Git graph down the right margin of every note, with whitespace dots behind it */
+.workspace-leaf-content[data-type="markdown"] .view-content{background-image:var(--sb-graph),radial-gradient(circle at 11px 11px,var(--sb-dot) 1px,transparent 1.5px);background-size:var(--sb-graph-w) 968px,22px 22px;background-position:right 0 bottom 0,left 0 bottom 0;background-repeat:repeat-y,repeat}
+.workspace-leaf-content[data-type="markdown"] :is(.markdown-source-view,.markdown-reading-view,.cm-editor,.cm-scroller,.markdown-preview-view){background-color:transparent}
+
+/* Mono for the interface around your notes; note text keeps your text font */
+:is(.nav-file-title,.nav-folder-title,.workspace-tab-header-inner-title,.view-header-title,.view-header-breadcrumb,.status-bar,.cm-gutters,.tree-item-self){font-family:var(--sb-mono)}
+.nav-file-title.is-active,.tree-item-self.is-active{box-shadow:inset 2px 0 0 var(--interactive-accent);border-radius:3px}
+
+/* Headings keep their markdown markers */
+.markdown-rendered :is(h1,h2,h3,h4,h5,h6)::before{color:var(--sb-kw);font-weight:400}
+.markdown-rendered h1::before{content:"# "}
+.markdown-rendered h2::before{content:"## "}
+.markdown-rendered h3::before{content:"### "}
+.markdown-rendered h4::before{content:"#### "}
+.markdown-rendered h5::before{content:"##### "}
+.markdown-rendered h6::before{content:"###### "}
+.markdown-source-view.mod-cm6 .cm-formatting-header{color:var(--sb-kw);font-weight:400}
+.markdown-source-view.is-live-preview .HyperMD-header:not(:has(.cm-formatting-header))::before{color:var(--sb-kw);font-weight:400}
+.markdown-source-view.is-live-preview .HyperMD-header-1:not(:has(.cm-formatting-header))::before{content:"# "}
+.markdown-source-view.is-live-preview .HyperMD-header-2:not(:has(.cm-formatting-header))::before{content:"## "}
+.markdown-source-view.is-live-preview .HyperMD-header-3:not(:has(.cm-formatting-header))::before{content:"### "}
+.markdown-source-view.is-live-preview .HyperMD-header-4:not(:has(.cm-formatting-header))::before{content:"#### "}
+.markdown-source-view.is-live-preview .HyperMD-header-5:not(:has(.cm-formatting-header))::before{content:"##### "}
+.markdown-source-view.is-live-preview .HyperMD-header-6:not(:has(.cm-formatting-header))::before{content:"###### "}
+
+/* Inline code reads as a string */
+.markdown-rendered :not(pre)>code,.markdown-source-view.mod-cm6 .cm-inline-code:not(.cm-formatting){color:var(--sb-str)}
+
+/* Quotes are // comments */
+.markdown-rendered blockquote{padding-inline-start:26px;background:var(--sb-slash) 0 0/22px 1lh no-repeat;background-repeat:no-repeat round}
+.markdown-source-view.mod-cm6 .HyperMD-quote::before{display:none}
+.markdown-source-view.mod-cm6 .HyperMD-quote{color:var(--blockquote-color);font-style:italic}
+.markdown-source-view.mod-cm6 .cm-formatting-quote .cm-transparent{display:none}
+.markdown-source-view.mod-cm6 .cm-formatting-quote:has(.cm-transparent)::before{content:"//";color:var(--sb-cm);font-family:var(--sb-mono);font-style:normal}
+
+/* Links underline with dots, like a go-to-definition hint */
+.markdown-rendered a,.markdown-source-view.mod-cm6 .cm-underline{text-decoration-style:dotted;text-underline-offset:3px}
+.markdown-rendered hr,.markdown-source-view.mod-cm6 hr{border-top-style:dashed}
+
+/* Editor gutter and cursor */
+.markdown-source-view.mod-cm6 .cm-gutters{font-size:.8em}
+.markdown-source-view.mod-cm6 .cm-activeLineGutter{color:var(--text-accent)}
+.markdown-source-view.mod-cm6 .cm-content{caret-color:var(--interactive-accent)}
+
+/* Vim mode chip in the status bar: real Vim modes when Vim key bindings are on */
+body:has(.workspace-leaf.mod-active .cm-editor.cm-focused){--sb-mode:var(--sb-insert)}
+body:has(.workspace-leaf.mod-active .cm-editor.cm-focused .cm-fat-cursor){--sb-mode:var(--sb-normal)}
+body:has(.workspace-leaf.mod-active .cm-editor.cm-focused .cm-fat-cursor):has(.workspace-leaf.mod-active .cm-editor.cm-focused .cm-layer.cm-cursorLayer .cm-cursor-primary){--sb-mode:var(--sb-visual)}
+.status-bar::before{content:"";flex:0 0 auto;width:var(--sb-mode-w);height:18px;margin-inline-end:6px;background:var(--sb-mode) 0 0/auto 18px no-repeat}
