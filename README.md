@@ -9,7 +9,8 @@ Your vault as an open editor buffer. Scratch Buffer is a light and dark Obsidian
 - **Markdown reads like source.** Headings keep their `#` markers. Inline code is coloured like a string, quotes read as `//` comments, and links get a dotted underline.
 - **A git graph runs down the margin**, with whitespace dots behind it, in the same colours as the syntax.
 - **A Vim mode chip sits in the corner of the note you're editing**, like a Vim mode line. With Vim key bindings on, it shows `NORMAL`, `INSERT` or `VISUAL`. Without Vim, it shows `INSERT` while you're typing.
-- **Monospace interface.** The whole interface, plus headings and line numbers, uses [JetBrains Mono](https://www.jetbrains.com/lp/mono/) if you have it installed, then your system monospace font. Note text keeps your normal text font. Fonts you set in **Settings → Appearance** still take priority.
+- **Monospace everything.** The interface and your notes use [JetBrains Mono](https://www.jetbrains.com/lp/mono/) if you have it installed, then your system monospace font. Fonts you set in **Settings → Appearance** still take priority.
+- **Block cursor.** The text cursor is a blinking block in the accent colour, like a terminal.
 
 ![Scratch Buffer, light](images/light.png)
 
@@ -24,7 +25,7 @@ So nothing comes as a surprise, here is everything the theme overrides.
 | Interface: sidebars, tabs, menus, status bar | JetBrains Mono, then SF Mono, then your system monospace |
 | Headings and the note title | The same monospace font |
 | Code, inline code and line numbers | The same monospace font |
-| Note text | Unchanged: your text font, or Obsidian's default |
+| Note text | The same monospace font |
 
 Fonts you choose in **Settings → Appearance** (interface font, text font, monospace font) always take priority over the theme. To let the theme pick, leave those empty.
 
@@ -43,6 +44,7 @@ JetBrains Mono isn't bundled with the theme, to keep it small. [Install it](http
 - Inline code is coloured like a string.
 - Links use a dotted underline instead of a solid one.
 - Horizontal rules are dashed.
+- The text cursor is a block instead of a thin line. It blinks like your system's cursor.
 - Corners are slightly tighter.
 
 **Additions**
