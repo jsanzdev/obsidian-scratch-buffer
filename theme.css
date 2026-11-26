@@ -69,8 +69,9 @@ body{--link-decoration:none;--link-decoration-hover:none;--link-external-decorat
    Obsidian adds .cm-vimMode in Normal and Visual and drops it in Insert. */
 .markdown-source-view.mod-cm6 .cm-editor.cm-focused .cm-scroller::after,.markdown-source-view.mod-cm6 .cm-editor.cm-focused .cm-vimMode>.cm-layer.cm-cursorLayer:not(:empty)::after{content:"";position:fixed;left:12px;bottom:12px;width:59px;height:18px;pointer-events:none;background:var(--sb-insert) 0 0/auto 18px no-repeat}
 .markdown-source-view.mod-cm6 .cm-editor.cm-focused .cm-scroller.cm-vimMode::after{background-image:var(--sb-normal)}
-/* Visual: this layer holds a cursor only in Visual mode. Obsidian hides it under Vim;
-   show the layer (not its cursor) and hang a steady VISUAL chip on it. */
-.markdown-source-view.mod-cm6 .cm-editor.cm-focused .cm-vimMode>.cm-layer.cm-cursorLayer:not(:empty){display:block !important;animation:none !important}
+/* Visual: this layer holds a cursor only in Visual mode. CodeMirror's Vim mode hides it;
+   show the layer (not its cursor) and hang a VISUAL chip on it. CodeMirror blinks the
+   layer with an inline animation; a long delay keeps that blink from ever starting. */
+.markdown-source-view.mod-cm6 .cm-editor.cm-focused .cm-vimMode>.cm-layer.cm-cursorLayer:not(:empty){display:block;animation-delay:100000s}
 .markdown-source-view.mod-cm6 .cm-editor.cm-focused .cm-vimMode>.cm-layer.cm-cursorLayer:not(:empty)>*{visibility:hidden}
 .markdown-source-view.mod-cm6 .cm-editor.cm-focused .cm-vimMode>.cm-layer.cm-cursorLayer:not(:empty)::after{background-image:var(--sb-visual)}
